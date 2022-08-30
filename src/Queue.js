@@ -14,6 +14,11 @@ class Queue {
     return this.data[0]
   }
 
+  #remove() {
+    this.data.shift();
+    this.length--;
+  }
+
   // Adicionamos o valor no final da Fila.
   set enqueue(value) {
     this.data = [...this.data, value];
@@ -26,9 +31,7 @@ class Queue {
 
     // Guardamos o valor, para retorná-lo e apagá-lo da Fila.
     const firstValue = this.#getFirstValue();
-
-    this.data.shift();
-    this.length--;
+    this.#remove();
 
     return firstValue;
   }
@@ -38,9 +41,10 @@ const messages = new Queue();
 
 messages.enqueue = "Hello World!";
 messages.enqueue = "This is a Queue";
-console.log(messages.dequeue)
-console.log(messages.dequeue)
+console.log(messages.dequeue);
 
 messages.enqueue = "Cool!";
-console.log(messages.dequeue)
 
+console.log(messages.dequeue);
+console.log(messages);
+console.log(messages.dequeue);
